@@ -1,0 +1,34 @@
+   <ul id="slide-out" class="side-nav fixed">
+      <li>
+         <div class="user-view">
+            <div class="background">
+               <img src="/images/todos.jpg">
+            </div>
+            <a href="/home"><h1 class="title">Messengerino</h1></a>
+           <span  class="white-text name hidden">a</span>
+           <span class="white-text email">Logged in as: <%= user.username %></span>
+         <a href="/joingroup" class="waves-effect waves-light btn">JOIN GROUP</a>
+
+         </div>
+      </li>
+
+      <% for(var i = 0; groups.length > i; i++){ %>
+         <% var group = groups[i] %>
+        <% if(typeof id != 'undefined' && group.id == id){ %>
+            <li class="selected"><a href="/group/<%= group.id %>"><%= group.title %></a></li>
+         <% } else { %>
+            <li><a href="/group/<%= group.id %>"><%= group.title %></a></li>
+         <% } %>
+         
+      <% } %>
+      
+   
+            <li ><div class="center-align"><a id="addButton" href="/creategroup" class="waves-effect waves-light btn">CREATE GROUP</a></div></li>
+
+
+            <li ><div class="left-align"><a id="logoutButton" href="/logout" class="waves-effect waves-light btn red"><i class="material-icons left">arrow_back</i>Logout</a></div></li>
+
+   </ul>
+   <a href="#" data-activates="slide-out" class="button-collapse"><i class="medium material-icons" id="menuIcon">menu</i></a>
+
+<main>

@@ -1,0 +1,25 @@
+<% include ../partials/general/header.ejs %>
+
+<div class="row">
+    <form action="/creategroup" method="post" class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="title" type="text" name="title" class="validate"  required="" aria-required="true">
+          <label for="title">Title</label>
+        </div>
+
+ 
+        <div class="row">
+      <div class="center-align">
+
+  <button class="btn waves-effect waves-light btn-large" id="submit" type="submit" name="action">Create
+    <i class="material-icons right">Create</i>
+  </button>
+  </div>
+</div>
+
+    </form>
+  </div>
+  
+
+<% include ../partials/general/footer.ejs %>

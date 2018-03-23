@@ -1,0 +1,32 @@
+<% include ../partials/general/header.ejs %>
+
+<div class="hidden">
+    <senderUserId><%= user.id %></senderUserId>
+    <username><%= user.username %></username>
+    <groupId><%= id %></groupId>
+</div>
+
+
+<div class="container">
+                <input placeholder="Message" type="text" class="validate message-input">
+
+    <table class="bordered striped responsive-table">
+        <thead>
+          <tr>
+              <th class="table-title"><span class="left-align">Messages</span></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          
+   
+    
+        
+        </tbody>
+      </table>
+
+</div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.slim.js"></script>
+
+<script type="text/javascript" src="/js/group.js"></script>
+<% include ../partials/general/footer.ejs %>

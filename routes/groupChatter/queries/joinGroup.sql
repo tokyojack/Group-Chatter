@@ -1,0 +1,1 @@
+INSERT INTO `users_in_group`(`user_id`, `group_id`) SELECT ?, (SELECT id FROM groups WHERE title=?);
