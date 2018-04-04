@@ -1,7 +1,5 @@
-module.exports = function(socket) {
+module.exports = function (socket) {
 
-    socket.on('join', function(data) {
-        socket.join(data.groupId); // We are using room of socket io
-    });
+    socket.on("join", data => socket.join(data.groupId));
 
 };

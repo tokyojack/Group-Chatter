@@ -1,13 +1,12 @@
-module.exports = function(pool, socket, io) {
+module.exports = function (pool, socket, io) {
 
-    socket.on('message', function(newMessage) {
-        var groupId = newMessage.groupId;
-
-        var username = newMessage.username;
-        var message = newMessage.message;
-
-        io.sockets.in(groupId).emit('new_message', { username: username, message: message });
-
-    });
+    socket.on("message", newMessage =>
+        io.sockets
+        .in(newMessage.groupId)
+        .emit("new_message", {
+            username: newMessage.message,
+            message: newMessage.username
+        })
+    );
 
 };

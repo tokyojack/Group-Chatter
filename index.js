@@ -49,8 +49,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(flash());
-
 var flashUtils = require('./utils/flashUtils');
 
 app.use(function(req, res, next) {
@@ -120,7 +118,7 @@ app.use("/logout", logoutRoutes);
 var miscRoutes = require("./routes/misc/miscRoutes")();
 app.use("*", miscRoutes);
 
-//
+//============================= Socket io =============================
 
 io.on('connection', function(socket) {
 
@@ -131,7 +129,6 @@ io.on('connection', function(socket) {
 
 //============================= Starting Server =============================
 
-// Make sure it's "http" instead of "app" for Socket.io
 http.listen(8080, function() {
     console.log("Server running".rainbow);
 });
