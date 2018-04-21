@@ -31,15 +31,13 @@ require('./config/passport')(passport, pool);
 //============================= Letting express use them =============================
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(__dirname + "/public"));
-app.use(flash());
-
-app.use(cookieParser()); // read cookies (needed for auth)
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
 app.use(bodyParser.json());
 
+app.use(express.static(__dirname + "/public"));
+
+app.use(flash());
+
+app.use(cookieParser());
 app.use(session({
     secret: 'RANDOM',
     resave: true,
@@ -89,7 +87,7 @@ app.use(function(req, res, next) {
 var indexRoutes = require("./routes/indexRoutes")();
 app.use("/", indexRoutes);
 
-//
+// Group chatter
 
 var homeRoutes = require("./routes/groupChatter/homeRoutes")();
 app.use("/home", homeRoutes);
@@ -102,6 +100,7 @@ app.use("/creategroup", createGroupRoutes);
 
 var joinGroupRoutes = require("./routes/groupChatter/joinGroupRoutes")(pool);
 app.use("/joingroup", joinGroupRoutes);
+
 // Authentication
 
 var loginRoutes = require("./routes/authentication/loginRoutes")(passport);

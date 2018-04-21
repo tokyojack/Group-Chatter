@@ -5,14 +5,13 @@ var flashUtils = require("../../utils/flashUtils");
 
 var redirectLocation = "/home";
 
-// URL: "/home"
+// URL: "/joingroup"
 module.exports = function (pool) {
-    // "home.ejs" page
-    router.get("/", middleMan.isLoggedIn, (req, res) =>
-        res.render("groupChatter/joinGroup.ejs")
-    );
 
-    // "compose.ejs" page post
+    // "joinGroup.ejs" page
+    router.get("/", middleMan.isLoggedIn, (req, res) => res.render("groupChatter/joinGroup.ejs"));
+
+    // Add's the user to the group
     router.post("/", middleMan.isLoggedIn, function (req, res) {
         pool.getConnection(function (err, connection) {
             if (flashUtils.isDatabaseError(req, res, redirectLocation, err))
@@ -26,9 +25,10 @@ module.exports = function (pool) {
             ) {
                 connection.release();
 
-                if (flashUtils.isDatabaseError(req, res, redirectLocation, err)) 
+                if (flashUtils.isDatabaseError(req, res, redirectLocation, err))
                     return;
 
+                // Redirect's the user to the joined group
                 flashUtils.successMessage(
                     req,
                     res,
